@@ -49,6 +49,30 @@ void Vector::set(std::size_t i, double d) {
     elem[i] = d;
 }
 
+double& Vector::operator[](std::size_t i) {
+    return elem[i];
+}
+
+const double& Vector::operator[](std::size_t i) const {
+    return elem[i];
+}
+
+double* Vector::begin() {
+    return elem;
+}
+
+double* Vector::end() {
+    return elem + sz;
+}
+
+const double* Vector::begin() const {
+    return elem;
+}
+
+const double* Vector::end() const {
+    return elem + sz;
+}
+
 // size property
 std::size_t Vector::size() const {
     return sz;

@@ -12,18 +12,30 @@
 class Vector {
 public:
     // Constructors
-    Vector();
-    explicit Vector(std::size_t size);
+    Vector(); // Default constructor
+    explicit Vector(std::size_t size); // Constructor2
 
-    ~Vector();
+    ~Vector(); // Destructor
 
-    Vector(const Vector& other);
+    Vector(const Vector& other); // Copy constructor
 
-    Vector & operator=(const Vector & v);
+    Vector & operator=(const Vector & v); // Assignment Operator
 
     double get(std::size_t i) const;
 
     void set(std::size_t i, double d);
+
+    double& operator[](std::size_t i); // Subscript operator (r/w)
+
+    const double& operator[](std::size_t i) const; // Subscript operator
+
+    double* begin(); // iterator
+
+    double* end();
+
+    const double* begin() const;
+
+    const double* end() const;
 
     std::size_t size() const;
 

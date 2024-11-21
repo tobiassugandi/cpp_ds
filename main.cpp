@@ -20,18 +20,19 @@ int main()
     // Vector w= v;     // copy constructor
     Vector w(3);    // assignment
     w = v;
-    for (std::size_t i = 0; i != w.size(); i++)
-        w.set(i, i*i);
+    for (std::size_t i = 0; i != w.size(); i++) {
+        // w.set(i, i*i);
+        w[i] = i*i;
+    }
 
-    for (std::size_t i = 0; i != w.size(); i++)
-        std::cout << w.get(i) << std::endl;
+    for (std::size_t i = 0; i != w.size(); i++) {
+        // std::cout << w.get(i) << std::endl;
+        std::cout << w[i] << std::endl;
+    }
 
-    return 0;
-
-
-    // for (auto i = v.begin(); i != v.end(); i++) {
-    //     std::cout << *i << std::endl;
-    // }
+    for (auto i = v.begin(); i != v.end(); i++) {
+        std::cout << *i << std::endl;
+    }
 
 
     // // Vector of length 10
@@ -52,4 +53,6 @@ int main()
     // for (const auto x : v) {
     //     std::cout << x << " ";
     // }
+
+    return 0;
 }
