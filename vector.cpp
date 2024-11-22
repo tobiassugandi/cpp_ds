@@ -1,6 +1,8 @@
 //
 // Created by Tobias Samuel Sugandi on 20.11.2024.
 //
+#include <iostream>
+#include <ostream>
 #ifndef VECTOR_CPP
 #define VECTOR_CPP
 
@@ -15,18 +17,26 @@
 Vector::Vector(): sz{0}, elem{nullptr} {};
 Vector::Vector(std::size_t s) : sz{s}, elem{new double[s] }{}
 
-// copy constructor (deep copy)
-Vector::Vector(const Vector &v): Vector(v.sz) {
-    std::copy(v.elem, v.elem + v.sz, elem);
-}
-
 // destructor
 Vector::~Vector() {
     delete[] elem;
 }
 
+// copy constructor (deep copy)
+Vector::Vector(const Vector &v): Vector(v.sz) {
+    std::cout<<"Vector copy constructor"<<std::endl;
+    std::copy(v.elem, v.elem + v.sz, elem);
+}
+
+Vector::Vector(Vector && v): Vector() {
+    std::cout<<"move constructor"<<std::endl;
+    swap(v);
+}
+
+
 // assignment operator
 Vector& Vector::operator=(const Vector& v) {
+    std::cout<<"copy assignment operator"<<std::endl;
     // if (v.elem == elem) return *this;
     // if (elem != nullptr) delete [] elem;
     // sz = v.sz;
@@ -36,6 +46,12 @@ Vector& Vector::operator=(const Vector& v) {
     // -- Copy and Swap Idiom --
     Vector cpy(v);
     swap(cpy);
+    return *this;
+}
+
+Vector& Vector::operator=(Vector&& v) {
+    std::cout<<"move assignment operator"<<std::endl;
+    swap(v);
     return *this;
 }
 

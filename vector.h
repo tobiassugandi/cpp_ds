@@ -19,7 +19,11 @@ public:
 
     Vector(const Vector& other); // Copy constructor
 
+    Vector(Vector&& other);
+
     Vector & operator=(const Vector & v); // Assignment Operator
+
+    Vector& operator=(Vector&& v);
 
     double get(std::size_t i) const;
 
